@@ -1,0 +1,289 @@
+import React, { useEffect, useState } from "react";
+import { ShoppingBag, Menu, X } from "lucide-react";
+
+interface NavLink {
+    label: string;
+    href: string;
+}
+
+const navLinks: NavLink[] = [
+    {
+        label: "Home",
+        href: "/",
+    },
+    {
+        label: "Courses",
+        href: "/courses",
+    },
+    {
+        label: "Creators",
+        href: "/creators",
+    },
+];
+
+const Navbar: React.FC = () => {
+    const [isVisible, setIsVisible] = useState<boolean>(true);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+
+    useEffect(() => {
+        let lastScrollY = window.scrollY;
+
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Top of the page
+            if (currentScrollY <= 10) {
+                setIsVisible(true);
+            }
+            // Scrolling down
+            else if (currentScrollY > lastScrollY) {
+                setIsVisible(false);
+                setMobileMenuOpen(false);
+            }
+            // Scrolling up
+            else if (currentScrollY < lastScrollY) {
+                setIsVisible(true);
+            }
+
+            lastScrollY = currentScrollY;
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    return (
+        <>
+            {/* Navbar */}
+            <header
+                className={`
+          fixed
+          left-0
+          top-0
+          z-50
+          w-full
+          bg-[#073BDD]
+          transition-transform
+          duration-300
+          ease-in-out
+          ${isVisible ? "translate-y-0" : "-translate-y-full"}
+        `}
+            >
+                <nav className="mx-auto flex h-[106px] w-full items-center">
+
+                    {/* ================= Logo ================= */}
+                    <div
+                        className="
+              flex
+              h-full
+              w-[320px]
+              shrink-0
+              items-center
+              px-[106px]
+            "
+                    >
+                        <a
+                            href="/"
+                            className="flex items-center gap-2 whitespace-nowrap"
+                        >
+                            <div className="w-7 h-7 flex items-center justify-center">
+                                <img src="/bbytespace.png" alt="Logo" />
+                            </div>
+
+                            <span className="text-[20px] font-bold tracking-[-0.7px] text-white">
+                                ByteSpace
+                            </span>
+                        </a>
+                    </div>
+
+                    {/* ================= Left Empty Space ================= */}
+                    <div className="hidden h-full flex-1 lg:block" />
+
+                    {/* ================= Center Menu ================= */}
+                    <div className="hidden h-full lg:flex">
+                        {navLinks.map((link) => (
+                            <a
+                                key={link.label}
+                                href={link.href}
+                                className="
+                  flex
+                  h-full
+                  w-[106px]
+                  items-center
+                  justify-center
+                  text-[14px]
+                  font-normal
+                  text-white
+                  transition-colors
+                  duration-200
+                  hover:bg-white/10
+                "
+                            >
+                                {link.label}
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* ================= Right Empty Space ================= */}
+                    <div className="hidden h-full flex-1  lg:block" />
+
+                    {/* ================= Right Actions ================= */}
+                    <div className="hidden h-full lg:flex">
+                        <a
+                            href="/login"
+                            className="
+                flex
+                h-full
+                w-[105px]
+                items-center
+                justify-center
+                text-[14px]
+                text-white
+                transition-colors
+                hover:bg-white/10
+              "
+                        >
+                            Sign In
+                        </a>
+
+                        <a
+                            href="/join"
+                            className="
+                flex
+                h-full
+                w-[106px]
+                items-center
+                justify-center
+                text-[14px]
+                text-white
+                transition-colors
+                hover:bg-white/10
+              "
+                        >
+                            Join Us
+                        </a>
+
+                        <a
+                            href="/cart"
+                            aria-label="Shopping cart"
+                            className="
+                flex
+                h-full
+                w-[104px]
+                items-center
+                justify-center
+                text-white
+                transition-colors
+                hover:bg-white/10
+              "
+                        >
+                            <ShoppingBag
+                                size={20}
+                                strokeWidth={1.8}
+                            />
+                        </a>
+                    </div>
+
+                    {/* ================= Mobile Menu Button ================= */}
+                    <div className="ml-auto flex h-full items-center px-5 lg:hidden">
+                        <button
+                            type="button"
+                            aria-label="Toggle menu"
+                            onClick={() => setMobileMenuOpen((prev) => !prev)}
+                            className="text-white"
+                        >
+                            {mobileMenuOpen ? (
+                                <X size={25} strokeWidth={1.8} />
+                            ) : (
+                                <Menu size={25} strokeWidth={1.8} />
+                            )}
+                        </button>
+                    </div>
+                </nav>
+
+                {/* ================= Mobile Menu ================= */}
+                <div
+                    className={`
+            overflow-hidden
+            bg-[#073BDD]
+            transition-all
+            duration-300
+            lg:hidden
+            ${mobileMenuOpen ? "max-h-[400px]" : "max-h-0"}
+          `}
+                >
+                    {navLinks.map((link) => (
+                        <a
+                            key={link.label}
+                            href={link.href}
+                            className="
+                block
+                px-6
+                py-4
+                text-sm
+                text-white
+                transition-colors
+                hover:bg-white/10
+              "
+                        >
+                            {link.label}
+                        </a>
+                    ))}
+
+                    <a
+                        href="/login"
+                        className="
+              block
+              px-6
+              py-4
+              text-sm
+              text-white
+              hover:bg-white/10
+            "
+                    >
+                        Sign In
+                    </a>
+
+                    <a
+                        href="/join"
+                        className="
+              block
+              px-6
+              py-4
+              text-sm
+              text-white
+              hover:bg-white/10
+            "
+                    >
+                        Join Us
+                    </a>
+
+                    <a
+                        href="/cart"
+                        className="
+              flex
+              items-center
+              gap-3
+              px-6
+              py-4
+              text-sm
+              text-white
+              hover:bg-white/10
+            "
+                    >
+                        <ShoppingBag size={18} />
+                        Cart
+                    </a>
+                </div>
+            </header>
+
+            {/* Navbar space */}
+            <div className="h-[106px] w-full" />
+        </>
+    );
+};
+
+export default Navbar;
