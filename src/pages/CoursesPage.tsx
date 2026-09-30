@@ -12,14 +12,11 @@ export default function CoursesPage() {
 
   return (
     <main className="min-h-screen bg-white">
-      {/* Blue Header + Hero */}
       <CourseHero course={course}></CourseHero>
 
-      {/* Main Content */}
       <div className="mx-auto max-w-[1180px] px-5">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_340px]">
           
-          {/* LEFT */}
           <section className="min-w-0">
             <CourseTabs
               courseId={id || ""}
@@ -31,7 +28,6 @@ export default function CoursesPage() {
             </div>
           </section>
 
-          {/* RIGHT */}
           <aside className="hidden lg:block">
           </aside>
         </div>

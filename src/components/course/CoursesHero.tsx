@@ -23,9 +23,7 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
 
   return (
     <>
-      {/* ================= HERO ================= */}
       <section className="relative overflow-visible bg-[#063CE5]">
-        {/* Grid Background */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-[0.28]"
@@ -39,7 +37,6 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[1180px] px-5 pb-7 pt-7 sm:px-7 lg:px-8">
-          {/* ================= COURSE HEADER ================= */}
           <div className="flex items-start justify-between gap-5">
             <div className="min-w-0">
               <h1 className="text-[19px] font-bold leading-tight tracking-[-0.4px] text-white sm:text-[22px] lg:text-[24px]">
@@ -82,9 +79,7 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
             </button>
           </div>
 
-          {/* ================= DESKTOP HERO CONTENT ================= */}
           <div className="relative mt-5 lg:mt-6">
-            {/* Video */}
             <div className="w-full lg:w-[calc(100%-350px)]">
               <div className="relative aspect-video w-full overflow-hidden rounded-[10px] bg-[#E9E9E9] sm:rounded-[12px]">
                 <img
@@ -96,7 +91,6 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
                   className="h-full w-full object-cover"
                 />
 
-                {/* Play Button */}
                 <button
                   type="button"
                   aria-label="Play course preview"
@@ -111,13 +105,11 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
               </div>
             </div>
 
-            {/* ================= DESKTOP SIDEBAR ================= */}
             <aside className="absolute right-0 top-0 hidden w-[330px] lg:block">
               <CourseSidebar course={course} />
             </aside>
           </div>
 
-          {/* Mobile Sidebar */}
           <div className="mt-5 lg:hidden">
             <CourseSidebar course={course} />
           </div>
@@ -127,7 +119,6 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
   );
 }
 
-/* ================= BADGE ================= */
 
 function Badge({
   children,

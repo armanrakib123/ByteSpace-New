@@ -31,16 +31,13 @@ const Navbar: React.FC = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Top of the page
             if (currentScrollY <= 10) {
                 setIsVisible(true);
             }
-            // Scrolling down
             else if (currentScrollY > lastScrollY) {
                 setIsVisible(false);
                 setMobileMenuOpen(false);
             }
-            // Scrolling up
             else if (currentScrollY < lastScrollY) {
                 setIsVisible(true);
             }
@@ -57,7 +54,6 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-            {/* Navbar */}
             <header
                 className={`
           fixed
@@ -74,7 +70,6 @@ const Navbar: React.FC = () => {
             >
                 <nav className="mx-auto flex h-[106px] w-full items-center">
 
-                    {/* ================= Logo ================= */}
                     <div
                         className="
               flex
@@ -99,10 +94,8 @@ const Navbar: React.FC = () => {
                         </a>
                     </div>
 
-                    {/* ================= Left Empty Space ================= */}
                     <div className="hidden h-full flex-1 lg:block" />
 
-                    {/* ================= Center Menu ================= */}
                     <div className="hidden h-full lg:flex">
                         {navLinks.map((link) => (
                             <a
@@ -127,10 +120,8 @@ const Navbar: React.FC = () => {
                         ))}
                     </div>
 
-                    {/* ================= Right Empty Space ================= */}
                     <div className="hidden h-full flex-1  lg:block" />
 
-                    {/* ================= Right Actions ================= */}
                     <div className="hidden h-full lg:flex">
                         <a
                             href="/login"
@@ -187,7 +178,6 @@ const Navbar: React.FC = () => {
                         </a>
                     </div>
 
-                    {/* ================= Mobile Menu Button ================= */}
                     <div className="ml-auto flex h-full items-center px-5 lg:hidden">
                         <button
                             type="button"
@@ -204,7 +194,6 @@ const Navbar: React.FC = () => {
                     </div>
                 </nav>
 
-                {/* ================= Mobile Menu ================= */}
                 <div
                     className={`
             overflow-hidden
@@ -280,7 +269,6 @@ const Navbar: React.FC = () => {
                 </div>
             </header>
 
-            {/* Navbar space */}
             <div className="h-[106px] w-full" />
         </>
     );

@@ -117,7 +117,6 @@ export default function Creator() {
 
   return (
     <main className="min-h-screen w-full bg-white text-[#20232A]">
-      {/* Creator Header */}
       <section className="relative overflow-hidden bg-[#123FDF]">
         <Grid />
 
@@ -187,7 +186,6 @@ export default function Creator() {
         </div>
       </section>
 
-      {/* Course Area */}
       <section className="mx-auto w-full max-w-[1240px] px-5 py-7 sm:px-7 lg:px-10 lg:py-9">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
@@ -248,7 +246,6 @@ export default function Creator() {
           />
         </div>
 
-        {/* Expandable filters */}
         <div
           className={`overflow-hidden transition-all duration-300 ${
             filterOpen
@@ -303,7 +300,6 @@ export default function Creator() {
           </div>
         </div>
 
-        {/* Category pills */}
         <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
           {categories
             .filter((item) => item !== "All")
@@ -374,7 +370,6 @@ export default function Creator() {
           </div>
         </div>
 
-        {/* Mobile search */}
         <div className="mt-4 sm:hidden">
           <label className="relative block">
             <Search

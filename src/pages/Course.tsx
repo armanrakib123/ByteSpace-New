@@ -104,14 +104,12 @@ function CourseCard({ course }: { course: Course }) {
     >
       <article className="group relative flex min-h-[350px] flex-col overflow-hidden rounded-[16px] border border-gray-200 bg-white p-[8px] transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_16px_35px_rgba(16,24,40,.10)]">
 
-        {/* Featured */}
         {course.featured && (
           <span className="absolute left-4 top-4 z-10 rounded-full bg-[#C7FF00] px-2.5 py-1 text-[7px] font-bold text-[#263000]">
             Featured
           </span>
         )}
 
-        {/* Image */}
         <div className="relative h-[154px] overflow-hidden rounded-[11px] bg-gray-100">
           <img
             src={course.image}
@@ -125,7 +123,6 @@ function CourseCard({ course }: { course: Course }) {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
 
-          {/* Meta */}
           <div className="absolute bottom-2 left-2 right-2 grid grid-cols-3 gap-1">
             <Meta>{course.lessons}</Meta>
             <Meta>{course.duration}</Meta>
@@ -133,7 +130,6 @@ function CourseCard({ course }: { course: Course }) {
           </div>
         </div>
 
-        {/* Content */}
         <div className="flex flex-1 flex-col px-1 pt-3">
 
           <div className="flex items-start justify-between gap-2">
