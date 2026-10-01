@@ -44,7 +44,7 @@ export default function Reviews() {
         {title}
       </h2>
 
-      <p className="mt-3 text-[10px] leading-5 text-gray-500">
+      <p className="mt-3 text-[13px] leading-5 text-gray-500">
         {description}
       </p>
 
@@ -55,7 +55,7 @@ export default function Reviews() {
             {overallRating.toFixed(1)}
           </span>
 
-          <span className="text-[8px]">
+          <span className="text-[11px]">
             Rating
           </span>
         </div>
@@ -84,7 +84,7 @@ export default function Reviews() {
               type="button"
               onClick={() => setSelectedFilter(item)}
               className={[
-                "rounded-full px-3 py-1.5 text-[9px] transition",
+                "rounded-full px-3 py-1.5 text-[12px] transition",
                 selectedFilter === item
                   ? "bg-[#c8ff00] text-black font-semibold"
                   : "bg-gray-100 text-gray-500 hover:bg-gray-200",
@@ -108,7 +108,7 @@ export default function Reviews() {
             />
           ))
         ) : (
-          <div className="rounded-xl border border-dashed border-gray-200 p-6 text-center text-[10px] text-gray-500">
+          <div className="rounded-xl border border-dashed border-gray-200 p-6 text-center text-[14px] text-gray-500">
             No reviews found for this rating.
           </div>
         )}
@@ -126,7 +126,7 @@ function RatingBar({
 }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="w-3 text-[8px] text-gray-500">
+      <span className="w-3 text-[11px] text-gray-500">
         {rating}
       </span>
 
@@ -175,17 +175,17 @@ function ReviewCard({
           </div>
 
           <div>
-            <p className="text-[10px] font-semibold">
+            <p className="text-[13px] font-semibold">
               {name}
             </p>
 
-            <p className="text-[8px] text-gray-500">
+            <p className="text-[11px] text-gray-500">
               {role}
             </p>
           </div>
         </div>
 
-        <span className="text-[8px] text-gray-400">
+        <span className="text-[11px] text-gray-400">
           {date || "recently"}
         </span>
       </div>
@@ -201,7 +201,7 @@ function ReviewCard({
         ))}
       </div>
 
-      <p className="mt-3 text-[9px] leading-5 text-gray-500">
+      <p className="mt-3 text-[12px] leading-5 text-gray-500">
         {text}
       </p>
     </article>

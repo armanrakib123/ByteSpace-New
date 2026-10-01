@@ -20,7 +20,7 @@ export default function About() {
           Description
         </h2>
 
-        <div className="mt-4 space-y-4 text-[11px] leading-5 text-gray-500">
+        <div className="mt-4 space-y-4 text-[14px] leading-5 text-gray-500">
           {descriptions.map((paragraph, index) => (
             <p key={index}>
               {paragraph}
@@ -64,7 +64,7 @@ export default function About() {
           {points.map((point) => (
             <div
               key={point}
-              className="flex items-center gap-2 text-[10px] text-gray-600"
+              className="flex items-center gap-2 text-[13px] text-gray-600"
             >
               <CheckCircle
                 size={12}

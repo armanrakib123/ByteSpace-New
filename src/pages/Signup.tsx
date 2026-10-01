@@ -23,8 +23,8 @@ const students = [
 
 type AuthMode = "login" | "signup";
 
-export default function Login() {
-  const [mode, setMode] = useState<AuthMode>("login");
+export default function Signup() {
+  const [mode, setMode] = useState<AuthMode>("signup");
   const [showPassword, setShowPassword] = useState(false);
 
   const signup = mode === "signup";

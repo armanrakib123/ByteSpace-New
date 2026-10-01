@@ -22,7 +22,7 @@ export default function Lessons() {
         {lessonTitle}
       </h2>
 
-      <p className="mt-3 max-w-2xl text-[10px] leading-5 text-gray-500">
+      <p className="mt-3 max-w-2xl text-[13px] leading-5 text-gray-500">
         {lessonDesc}
       </p>
 
@@ -45,11 +45,11 @@ export default function Lessons() {
             </div>
 
             <div>
-              <h4 className="text-[10px] font-semibold text-gray-900">
+              <h4 className="text-[13px] font-semibold text-gray-900">
                 {lesson.module}: {lesson.title}
               </h4>
 
-              <p className="mt-1 text-[9px] leading-4 text-gray-500">
+              <p className="mt-1 text-[12px] leading-4 text-gray-500">
                 {lesson.description}
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function Lessons() {
           Lesson Content
         </h3>
 
-        <p className="mt-3 text-[10px] leading-5 text-gray-500">
+        <p className="mt-3 text-[13px] leading-5 text-gray-500">
           {lessonContentDesc}
         </p>
       </section>
@@ -74,14 +74,14 @@ export default function Lessons() {
           Lesson Progress Tracking
         </h3>
 
-        <p className="mt-2 text-[10px] leading-5 text-gray-500">
+        <p className="mt-2 text-[13px] leading-5 text-gray-500">
           Witness your growth as you complete lessons, with an
           intuitive progress tracking feature guiding you through
           your learning journey.
         </p>
 
         <div className="mt-4 max-w-xl rounded-xl border border-gray-200 p-4">
-          <div className="flex justify-between text-[9px]">
+          <div className="flex justify-between text-[12px]">
             <span>{progressLabel}</span>
             <span className="font-bold">{progressPercentage}%</span>
           </div>
