@@ -34,7 +34,7 @@ export default function CourseTabs({
             key={tab.path}
             to={tab.path}
             className={[
-              "rounded-full px-4 py-2 text-[10px] font-medium transition",
+              "rounded-full px-4 py-2 text-[15px] font-medium transition",
               isActive
                 ? "bg-[#c8ff00] text-black"
                 : "bg-gray-100 text-gray-500 hover:bg-gray-200",

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ShoppingBag, Menu, X } from "lucide-react";
+import { useCart } from "../context/CartContext";
 
 interface NavLink {
     label: string;
@@ -22,6 +23,7 @@ const navLinks: NavLink[] = [
 ];
 
 const Navbar: React.FC = () => {
+    const { setIsCartOpen, cartCount } = useCart();
     const [isVisible, setIsVisible] = useState<boolean>(true);
     const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
@@ -31,13 +33,16 @@ const Navbar: React.FC = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
+            // Top of the page
             if (currentScrollY <= 10) {
                 setIsVisible(true);
             }
+            // Scrolling down
             else if (currentScrollY > lastScrollY) {
                 setIsVisible(false);
                 setMobileMenuOpen(false);
             }
+            // Scrolling up
             else if (currentScrollY < lastScrollY) {
                 setIsVisible(true);
             }
@@ -54,6 +59,7 @@ const Navbar: React.FC = () => {
 
     return (
         <>
+            {/* Navbar */}
             <header
                 className={`
           fixed
@@ -70,6 +76,7 @@ const Navbar: React.FC = () => {
             >
                 <nav className="mx-auto flex h-[106px] w-full items-center">
 
+                    {/* ================= Logo ================= */}
                     <div
                         className="
               flex
@@ -84,18 +91,20 @@ const Navbar: React.FC = () => {
                             href="/"
                             className="flex items-center gap-2 whitespace-nowrap"
                         >
-                            <div className="w-7 h-7 flex items-center justify-center">
+                            <div className="w-10 h-10 flex items-center justify-center">
                                 <img src="/bbytespace.png" alt="Logo" />
                             </div>
 
-                            <span className="text-[20px] font-bold tracking-[-0.7px] text-white">
+                            <span className="text-[28px] font-bold tracking-[-0.7px] text-white">
                                 ByteSpace
                             </span>
                         </a>
                     </div>
 
+                    {/* ================= Left Empty Space ================= */}
                     <div className="hidden h-full flex-1 lg:block" />
 
+                    {/* ================= Center Menu ================= */}
                     <div className="hidden h-full lg:flex">
                         {navLinks.map((link) => (
                             <a
@@ -107,7 +116,7 @@ const Navbar: React.FC = () => {
                   w-[106px]
                   items-center
                   justify-center
-                  text-[14px]
+                  text-[17px]
                   font-normal
                   text-white
                   transition-colors
@@ -120,8 +129,10 @@ const Navbar: React.FC = () => {
                         ))}
                     </div>
 
+                    {/* ================= Right Empty Space ================= */}
                     <div className="hidden h-full flex-1  lg:block" />
 
+                    {/* ================= Right Actions ================= */}
                     <div className="hidden h-full lg:flex">
                         <a
                             href="/login"
@@ -131,7 +142,7 @@ const Navbar: React.FC = () => {
                 w-[105px]
                 items-center
                 justify-center
-                text-[14px]
+                text-[17px]
                 text-white
                 transition-colors
                 hover:bg-white/10
@@ -141,14 +152,14 @@ const Navbar: React.FC = () => {
                         </a>
 
                         <a
-                            href="/join"
+                            href="/signup"
                             className="
                 flex
                 h-full
                 w-[106px]
                 items-center
                 justify-center
-                text-[14px]
+                text-[17px]
                 text-white
                 transition-colors
                 hover:bg-white/10
@@ -159,8 +170,13 @@ const Navbar: React.FC = () => {
 
                         <a
                             href="/cart"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setIsCartOpen(true);
+                            }}
                             aria-label="Shopping cart"
                             className="
+                relative
                 flex
                 h-full
                 w-[104px]
@@ -175,9 +191,15 @@ const Navbar: React.FC = () => {
                                 size={20}
                                 strokeWidth={1.8}
                             />
+                            {cartCount > 0 && (
+                                <span className="absolute top-9 right-8 flex h-4 min-w-4 items-center justify-center rounded-full bg-[#C8FF00] px-1 text-[10px] font-bold text-[#1B2500]">
+                                    {cartCount}
+                                </span>
+                            )}
                         </a>
                     </div>
 
+                    {/* ================= Mobile Menu Button ================= */}
                     <div className="ml-auto flex h-full items-center px-5 lg:hidden">
                         <button
                             type="button"
@@ -194,6 +216,7 @@ const Navbar: React.FC = () => {
                     </div>
                 </nav>
 
+                {/* ================= Mobile Menu ================= */}
                 <div
                     className={`
             overflow-hidden
@@ -237,7 +260,7 @@ const Navbar: React.FC = () => {
                     </a>
 
                     <a
-                        href="/join"
+                        href="/signup"
                         className="
               block
               px-6
@@ -252,10 +275,15 @@ const Navbar: React.FC = () => {
 
                     <a
                         href="/cart"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setMobileMenuOpen(false);
+                            setIsCartOpen(true);
+                        }}
                         className="
               flex
               items-center
-              gap-3
+              justify-between
               px-6
               py-4
               text-sm
@@ -263,12 +291,20 @@ const Navbar: React.FC = () => {
               hover:bg-white/10
             "
                     >
-                        <ShoppingBag size={18} />
-                        Cart
+                        <div className="flex items-center gap-3">
+                            <ShoppingBag size={18} />
+                            Cart
+                        </div>
+                        {cartCount > 0 && (
+                            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#C8FF00] px-1.5 text-xs font-bold text-[#1B2500]">
+                                {cartCount}
+                            </span>
+                        )}
                     </a>
                 </div>
             </header>
 
+            {/* Navbar space */}
             <div className="h-[106px] w-full" />
         </>
     );

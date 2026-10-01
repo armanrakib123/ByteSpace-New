@@ -13,6 +13,9 @@ const Home = () => {
 
   return (
     <main className="relative min-h-[100svh] w-full overflow-hidden bg-[#073de0] text-white">
+      {/* =====================================================
+          BACKGROUND GRID
+      ====================================================== */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.16]"
         style={{
@@ -32,6 +35,9 @@ const Home = () => {
         }}
       />
 
+      {/* =====================================================
+          LEFT LIME DECORATION
+      ====================================================== */}
       <div
         className="
           pointer-events-none
@@ -55,6 +61,9 @@ const Home = () => {
         </div>
       </div>
 
+      {/* =====================================================
+          RIGHT LIME SHAPE
+      ====================================================== */}
       <div
         className="
           pointer-events-none
@@ -79,6 +88,9 @@ const Home = () => {
         "
       />
 
+      {/* =====================================================
+          MAIN HERO
+      ====================================================== */}
       <section
         className="
           relative
@@ -96,6 +108,9 @@ const Home = () => {
           lg:px-10
         "
       >
+        {/* ===================================================
+            HEADING
+        ==================================================== */}
         <div
           className="
             mt-[42px]
@@ -138,6 +153,7 @@ const Home = () => {
             Courses Available
           </h1>
 
+          {/* DESCRIPTION */}
           <p
             className="
               mt-[20px]
@@ -164,6 +180,9 @@ const Home = () => {
           </p>
         </div>
 
+        {/* ===================================================
+            SEARCH
+        ==================================================== */}
         <div
           className="
             mt-[25px]
@@ -182,6 +201,7 @@ const Home = () => {
             lg:mt-[32px]
           "
         >
+          {/* Search Input */}
           <div
             className="
               flex
@@ -230,6 +250,8 @@ const Home = () => {
               "
             />
           </div>
+
+          {/* Search Button */}
           <button
             className="
               h-[40px]
@@ -259,6 +281,9 @@ const Home = () => {
           </button>
         </div>
 
+        {/* ===================================================
+            VISUAL / ILLUSTRATION AREA
+        ==================================================== */}
         <div
           className="
             relative
@@ -282,6 +307,9 @@ const Home = () => {
             xl:h-[550px]
           "
         >
+          {/* =================================================
+              LIME HALF CIRCLE
+          ================================================== */}
           <div className="
               absolute
               bottom-[-245px]
@@ -317,6 +345,10 @@ const Home = () => {
               xl:w-[740px]
             "
           />
+
+          {/* =================================================
+              LEFT WHITE OVAL
+          ================================================== */}
           <div
             className="
               absolute
@@ -373,6 +405,9 @@ const Home = () => {
             />
           </div>
 
+          {/* =================================================
+              LEFT WHITE ZIGZAG
+          ================================================== */}
           <div
             className="
               absolute
@@ -404,6 +439,9 @@ const Home = () => {
             <span className="absolute left-[14px] top-[59px] h-[17px] w-[60px] rotate-[7deg] rounded-full bg-white" />
           </div>
 
+          {/* =================================================
+              RIGHT WHITE ZIGZAG
+          ================================================== */}
           <div
             className="
               absolute
@@ -435,6 +473,9 @@ const Home = () => {
             <span className="absolute right-[8px] top-[94px] h-[28px] w-[88px] rotate-[-7deg] rounded-full bg-white" />
           </div>
 
+          {/* =================================================
+              TRIANGLE
+          ================================================== */}
           <div
             className="
               absolute
@@ -476,6 +517,9 @@ const Home = () => {
             />
           </div>
 
+          {/* =================================================
+              STUDENT IMAGE
+          ================================================== */}
           <div
             className="
               absolute
@@ -654,6 +698,8 @@ const Home = () => {
                 1200+
               </span>
             </div>
+
+            {/* Avatars */}
             <Avatars></Avatars>
           </div>
         </div>

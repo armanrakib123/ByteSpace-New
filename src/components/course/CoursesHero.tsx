@@ -23,7 +23,9 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
 
   return (
     <>
+      {/* ================= HERO ================= */}
       <section className="relative overflow-visible bg-[#063CE5]">
+        {/* Grid Background */}
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 opacity-[0.28]"
@@ -37,23 +39,24 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
         />
 
         <div className="relative z-10 mx-auto w-full max-w-[1180px] px-5 pb-7 pt-7 sm:px-7 lg:px-8">
+          {/* ================= COURSE HEADER ================= */}
           <div className="flex items-start justify-between gap-5">
             <div className="min-w-0">
-              <h1 className="text-[19px] font-bold leading-tight tracking-[-0.4px] text-white sm:text-[22px] lg:text-[24px]">
+              <h1 className="text-[22px] font-bold leading-tight tracking-[-0.4px] text-white sm:text-[24px] lg:text-[26px]">
                 {title}
               </h1>
 
-              <p className="mt-1 text-[10px] leading-4 text-white/90 sm:text-[11px]">
+              <p className="mt-1 text-[12px] leading-4 text-white/90 sm:text-[13px]">
                 {subtitle}
               </p>
 
-              <p className="mt-2 text-[8px] text-white/80 sm:text-[9px]">
+              <p className="mt-2 text-[10px] text-white/80 sm:text-[11px]">
                 by {instructor}
               </p>
 
               <div className="mt-2 flex flex-wrap gap-1.5">
                 <Badge>
-                  <span className="text-[8px]">●</span>
+                  <span className="text-[10px]">●</span>
                   {level}
                 </Badge>
 
@@ -72,14 +75,16 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
             {/* Share */}
             <button
               type="button"
-              className="mt-0.5 flex shrink-0 items-center gap-1 rounded-full bg-[#C8FF00] px-3 py-1.5 text-[8px] font-semibold text-[#1B2500] transition hover:bg-[#D7FF35] sm:px-4 sm:text-[9px]"
+              className="mt-0.5 flex shrink-0 items-center gap-1 rounded-full bg-[#C8FF00] px-3 py-1.5 text-[10px] font-semibold text-[#1B2500] transition hover:bg-[#D7FF35] sm:px-4 sm:text-[11px]"
             >
               <Share2 size={9} />
               Share
             </button>
           </div>
 
+          {/* ================= DESKTOP HERO CONTENT ================= */}
           <div className="relative mt-5 lg:mt-6">
+            {/* Video */}
             <div className="w-full lg:w-[calc(100%-350px)]">
               <div className="relative aspect-video w-full overflow-hidden rounded-[10px] bg-[#E9E9E9] sm:rounded-[12px]">
                 <img
@@ -91,6 +96,7 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
                   className="h-full w-full object-cover"
                 />
 
+                {/* Play Button */}
                 <button
                   type="button"
                   aria-label="Play course preview"
@@ -105,11 +111,13 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
               </div>
             </div>
 
+            {/* ================= DESKTOP SIDEBAR ================= */}
             <aside className="absolute right-0 top-0 hidden w-[330px] lg:block">
               <CourseSidebar course={course} />
             </aside>
           </div>
 
+          {/* Mobile Sidebar */}
           <div className="mt-5 lg:hidden">
             <CourseSidebar course={course} />
           </div>
@@ -119,6 +127,7 @@ export default function CourseHero({ course: propCourse }: { course?: CourseDeta
   );
 }
 
+/* ================= BADGE ================= */
 
 function Badge({
   children,
@@ -126,7 +135,7 @@ function Badge({
   children: React.ReactNode;
 }) {
   return (
-    <div className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[8px] font-medium text-[#222] sm:px-3 sm:py-1.5 sm:text-[9px]">
+    <div className="inline-flex items-center gap-1 rounded-full bg-white px-2.5 py-1 text-[10px] font-medium text-[#222] sm:px-3 sm:py-1.5 sm:text-[11px]">
       {children}
     </div>
   );

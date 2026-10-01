@@ -117,6 +117,7 @@ export default function Creator() {
 
   return (
     <main className="min-h-screen w-full bg-white text-[#20232A]">
+      {/* Creator Header */}
       <section className="relative overflow-hidden bg-[#123FDF]">
         <Grid />
 
@@ -136,22 +137,22 @@ export default function Creator() {
 
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <h1 className="text-[22px] font-bold tracking-[-0.5px] text-white sm:text-[27px]">
+                  <h1 className="text-[25px] font-bold tracking-[-0.5px] text-white sm:text-[30px]">
                     {currentCreator.name}
                   </h1>
 
-                  <span className="rounded-full bg-[#C7FF00] px-3 py-1 text-[8px] font-bold text-[#263000]">
+                  <span className="rounded-full bg-[#C7FF00] px-3 py-1 text-[11px] font-bold text-[#263000]">
                     Creator
                   </span>
                 </div>
 
-                <p className="mt-1 text-[10px] text-white/80 sm:text-[11px]">
+                <p className="mt-1 text-[13px] text-white/80 sm:text-[14px]">
                   {currentCreator.role}
                 </p>
               </div>
             </div>
 
-            <div className="max-w-[950px] space-y-1 text-[9px] leading-[1.7] text-white/85 sm:text-[10px]">
+            <div className="max-w-[950px] space-y-1 text-[12px] leading-[1.7] text-white/85 sm:text-[13px]">
               <p>
                 {currentCreator.description ||
                   `Welcome to the creative world of ${currentCreator.name}. Here, you'll discover the passion, expertise, and inspiration that drive my creative journey. Let's explore and learn together!`}
@@ -173,7 +174,7 @@ export default function Creator() {
               <button
                 type="button"
                 onClick={() => setFollowing((value) => !value)}
-                className={`inline-flex h-[30px] items-center justify-center rounded-full px-5 text-[9px] font-semibold transition ${
+                className={`inline-flex h-[30px] items-center justify-center rounded-full px-5 text-[12px] font-semibold transition ${
                   following
                     ? "bg-white text-[#123FDF]"
                     : "bg-[#C7FF00] text-[#263000] hover:bg-[#d5ff38]"
@@ -186,13 +187,14 @@ export default function Creator() {
         </div>
       </section>
 
+      {/* Course Area */}
       <section className="mx-auto w-full max-w-[1240px] px-5 py-7 sm:px-7 lg:px-10 lg:py-9">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-wrap gap-2">
             <button
               type="button"
               onClick={() => setFilterOpen((value) => !value)}
-              className={`inline-flex h-[30px] items-center gap-1.5 rounded-full border px-3 text-[9px] font-medium transition ${
+              className={`inline-flex h-[30px] items-center gap-1.5 rounded-full border px-3 text-[12px] font-medium transition ${
                 activeCount
                   ? "border-[#123FDF] bg-[#EEF2FF] text-[#123FDF]"
                   : "border-gray-200 text-gray-600 hover:border-gray-300"
@@ -202,7 +204,7 @@ export default function Creator() {
               Filter
 
               {activeCount > 0 && (
-                <b className="flex h-4 min-w-4 items-center justify-center rounded-full bg-[#123FDF] px-1 text-[8px] text-white">
+                <b className="flex h-4 min-w-4 items-center justify-center rounded-full bg-[#123FDF] px-1 text-[11px] text-white">
                   {activeCount}
                 </b>
               )}
@@ -246,6 +248,7 @@ export default function Creator() {
           />
         </div>
 
+        {/* Expandable filters */}
         <div
           className={`overflow-hidden transition-all duration-300 ${
             filterOpen
@@ -254,7 +257,7 @@ export default function Creator() {
           }`}
         >
           <div className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
-            <p className="mb-2 text-[9px] font-semibold text-gray-700">
+            <p className="mb-2 text-[12px] font-semibold text-gray-700">
               Categories
             </p>
 
@@ -272,7 +275,7 @@ export default function Creator() {
               ))}
             </div>
 
-            <p className="mb-2 mt-4 text-[9px] font-semibold text-gray-700">
+            <p className="mb-2 mt-4 text-[12px] font-semibold text-gray-700">
               Level
             </p>
 
@@ -292,7 +295,7 @@ export default function Creator() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="mt-3 text-[9px] font-semibold text-[#123FDF]"
+                className="mt-3 text-[12px] font-semibold text-[#123FDF]"
               >
                 Clear all filters
               </button>
@@ -300,6 +303,7 @@ export default function Creator() {
           </div>
         </div>
 
+        {/* Category pills */}
         <div className="mt-4 flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
           {categories
             .filter((item) => item !== "All")
@@ -310,7 +314,7 @@ export default function Creator() {
                 onClick={() =>
                   resetPage(() => setCategory(item))
                 }
-                className={`shrink-0 rounded-full px-3 py-1.5 text-[8px] font-medium transition ${
+                className={`shrink-0 rounded-full px-3 py-1.5 text-[12px] font-medium transition ${
                   category === item
                     ? "bg-[#C7FF00] text-[#263000]"
                     : "bg-gray-100 text-gray-500 hover:bg-gray-200"
@@ -321,12 +325,12 @@ export default function Creator() {
             ))}
         </div>
 
-        <div className="mt-7 flex items-end justify-between gap-4">
+        {/* <div className="mt-7 flex items-end justify-between gap-4">
           <div>
             <p className="text-[12px] font-semibold text-gray-900">
               Explore courses
             </p>
-            <p className="mt-0.5 text-[9px] text-gray-500">
+            <p className="mt-0.5 text-[12px] text-gray-500">
               Showing <b>{visible.length}</b> of{" "}
               <b>{filtered.length}</b> courses
             </p>
@@ -344,7 +348,7 @@ export default function Creator() {
                   resetPage(() => setSearch(event.target.value))
                 }
                 placeholder="Search courses"
-                className="h-[30px] w-[145px] rounded-full border border-gray-200 bg-white pl-8 pr-7 text-[9px] outline-none transition placeholder:text-gray-400 focus:border-[#123FDF] focus:ring-2 focus:ring-[#123FDF]/10"
+                className="h-[30px] w-[145px] rounded-full border border-gray-200 bg-white pl-8 pr-7 text-[12px] outline-none transition placeholder:text-gray-400 focus:border-[#123FDF] focus:ring-2 focus:ring-[#123FDF]/10"
               />
               {search && (
                 <button
@@ -361,15 +365,16 @@ export default function Creator() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="flex items-center gap-1 text-[9px] text-gray-500 transition hover:text-[#123FDF]"
+                className="flex items-center gap-1 text-[12px] text-gray-500 transition hover:text-[#123FDF]"
               >
                 <X size={11} />
                 Clear filters
               </button>
             )}
           </div>
-        </div>
+        </div> */}
 
+        {/* Mobile search */}
         <div className="mt-4 sm:hidden">
           <label className="relative block">
             <Search
@@ -382,7 +387,7 @@ export default function Creator() {
                 resetPage(() => setSearch(event.target.value))
               }
               placeholder="Search courses..."
-              className="h-[36px] w-full rounded-full border border-gray-200 bg-white pl-9 pr-8 text-[10px] outline-none focus:border-[#123FDF] focus:ring-2 focus:ring-[#123FDF]/10"
+              className="h-[36px] w-full rounded-full border border-gray-200 bg-white pl-9 pr-8 text-[13px] outline-none focus:border-[#123FDF] focus:ring-2 focus:ring-[#123FDF]/10"
             />
             {search && (
               <button
@@ -420,7 +425,7 @@ export default function Creator() {
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="inline-flex h-[27px] items-center gap-1.5 rounded-full bg-white px-3 text-[9px] text-gray-700">
+    <div className="inline-flex h-[27px] items-center gap-1.5 rounded-full bg-white px-3 text-[12px] text-gray-700">
       <b className="text-[#123FDF]">{value}</b>
       <span>{label}</span>
     </div>
@@ -432,7 +437,7 @@ function CourseCard({ course }: { course: Course }) {
     <Link to={`/courses/${course.id}`} className="block">
       <article className="group relative flex min-h-[300px] flex-col overflow-hidden rounded-[16px] border border-gray-200 bg-white p-[8px] transition-all duration-300 hover:-translate-y-1 hover:border-gray-300 hover:shadow-[0_16px_35px_rgba(16,24,40,.10)]">
         {course.featured && (
-          <span className="absolute left-4 top-4 z-10 rounded-full bg-[#C7FF00] px-2.5 py-1 text-[7px] font-bold text-[#263000]">
+          <span className="absolute left-4 top-4 z-10 rounded-full bg-[#C7FF00] px-2.5 py-1 text-[10px] font-bold text-[#263000]">
             Featured
           </span>
         )}
@@ -459,11 +464,11 @@ function CourseCard({ course }: { course: Course }) {
 
         <div className="flex flex-1 flex-col px-1 pt-3">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="min-w-0 flex-1 truncate text-[14px] font-semibold leading-5 text-gray-900">
+            <h3 className="min-w-0 flex-1 truncate text-[17px] font-semibold leading-5 text-gray-900">
               {course.title}
             </h3>
 
-            <span className="flex shrink-0 items-center gap-1 text-[10px] text-gray-500">
+            <span className="flex shrink-0 items-center gap-1 text-[13px] text-gray-500">
               {course.rating.toFixed(1)}
               <Star
                 size={12}
@@ -473,7 +478,7 @@ function CourseCard({ course }: { course: Course }) {
             </span>
           </div>
 
-          <p className="mt-0.5 text-[8px] text-gray-500">
+          <p className="mt-0.5 text-[11px] text-gray-500">
             by{" "}
             <span className="text-[#3858D6]">
               {course.creator}
@@ -481,7 +486,7 @@ function CourseCard({ course }: { course: Course }) {
           </p>
 
           <div className="mt-3 flex items-center justify-between gap-2">
-            <span className="flex h-[25px] items-center gap-1.5 rounded-full bg-gray-100 px-2.5 text-[8px] text-gray-600">
+            <span className="flex h-[25px] items-center gap-1.5 rounded-full bg-gray-100 px-2.5 text-[11px] text-gray-600">
               <BarChart3 size={11} />
               {course.level}
             </span>
@@ -491,10 +496,10 @@ function CourseCard({ course }: { course: Course }) {
 
           <div className="mt-auto flex items-end justify-between pt-4">
             <div>
-              <b className="text-[15px] text-[#064DE8]">
+              <b className="text-[18px] text-[#064DE8]">
                 ${course.price}
               </b>
-              <span className="ml-1 text-[8px] text-gray-500">
+              <span className="ml-1 text-[11px] text-gray-500">
                 /lifetime
               </span>
             </div>
@@ -519,7 +524,7 @@ function CourseCard({ course }: { course: Course }) {
 
 function Meta({ children }: { children: ReactNode }) {
   return (
-    <span className="truncate rounded-full bg-white/80 px-1.5 py-[4px] text-center text-[7px] font-medium text-gray-700 backdrop-blur-[5px]">
+    <span className="truncate rounded-full bg-white/80 px-1.5 py-[4px] text-center text-[10px] font-medium text-gray-700 backdrop-blur-[5px]">
       {children}
     </span>
   );
@@ -543,7 +548,7 @@ function Avatars() {
         </div>
       ))}
 
-      <span className="relative -ml-[7px] flex h-6 min-w-[29px] items-center justify-center rounded-full border-2 border-white bg-[#C7FF00] px-1 text-[7px] font-bold text-[#263000]">
+      <span className="relative -ml-[7px] flex h-6 min-w-[29px] items-center justify-center rounded-full border-2 border-white bg-[#C7FF00] px-1 text-[10px] font-bold text-[#263000]">
         26+
       </span>
     </div>
@@ -579,7 +584,7 @@ function SmallSelect({
         <select
           value={value}
           onChange={(event) => onChange(event.target.value)}
-          className={`h-[30px] max-w-[155px] appearance-none rounded-full border border-gray-200 bg-white py-0 pr-7 text-[9px] font-medium text-gray-600 outline-none transition focus:border-[#123FDF] focus:ring-2 focus:ring-[#123FDF]/10 ${
+          className={`h-[30px] max-w-[155px] appearance-none rounded-full border border-gray-200 bg-white py-0 pr-7 text-[12px] font-medium text-gray-600 outline-none transition focus:border-[#123FDF] focus:ring-2 focus:ring-[#123FDF]/10 ${
             icon ? "pl-7" : "pl-3"
           }`}
         >
@@ -612,7 +617,7 @@ function Chip({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-full border px-2.5 py-1.5 text-[8px] font-medium transition ${
+      className={`rounded-full border px-2.5 py-1.5 text-[11px] font-medium transition ${
         active
           ? "border-[#123FDF] bg-[#123FDF] text-white"
           : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
@@ -652,7 +657,7 @@ function Pagination({
         item === "..." ? (
           <span
             key={`ellipsis-${index}`}
-            className="px-1 text-[10px] text-gray-400"
+            className="px-1 text-[13px] text-gray-400"
           >
             ...
           </span>
@@ -661,7 +666,7 @@ function Pagination({
             key={item}
             type="button"
             onClick={() => onChange(item)}
-            className={`flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-[10px] font-medium transition ${
+            className={`flex h-8 min-w-8 items-center justify-center rounded-full px-2 text-[13px] font-medium transition ${
               item === page
                 ? "bg-[#123FDF] text-white"
                 : "text-gray-600 hover:bg-[#EEF2FF] hover:text-[#123FDF]"
@@ -715,16 +720,16 @@ function Empty({ onReset }: { onReset: () => void }) {
   return (
     <div className="mt-8 flex min-h-[260px] flex-col items-center justify-center rounded-2xl border border-dashed border-gray-300 bg-gray-50 text-center">
       <Search size={20} className="text-[#123FDF]" />
-      <h3 className="mt-3 text-[14px] font-semibold">
+      <h3 className="mt-3 text-[17px] font-semibold">
         No courses found
       </h3>
-      <p className="mt-1 text-[10px] text-gray-500">
+      <p className="mt-1 text-[13px] text-gray-500">
         Try another keyword or clear your filters.
       </p>
       <button
         type="button"
         onClick={onReset}
-        className="mt-4 rounded-full bg-[#123FDF] px-4 py-2 text-[9px] text-white transition hover:bg-[#0c35c4]"
+        className="mt-4 rounded-full bg-[#123FDF] px-4 py-2 text-[12px] text-white transition hover:bg-[#0c35c4]"
       >
         Clear all filters
       </button>

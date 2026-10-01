@@ -7,14 +7,19 @@ import {
 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getCourseById, type CourseDetail } from "../../config/courseService";
+import { useCart } from "../../context/CartContext";
 
 export default function CourseSidebar({ course: propCourse }: { course?: CourseDetail }) {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { addToCart, items } = useCart();
   const course = propCourse || getCourseById(id || 1)!;
   const sidebar = course.sidebar;
   const lessons = sidebar?.lessons || [];
   const instructor = sidebar?.instructor;
+
+  const isInCart = items.some((item) => String(item.product.id) === String(course.id));
+
 
   const featureIcons = [
     <BookOpen size={10} key="book" />,
@@ -39,11 +44,11 @@ export default function CourseSidebar({ course: propCourse }: { course?: CourseD
     >
       {/* ================= LESSONS ================= */}
 
-      <h2 className="text-[11px] font-bold text-[#17191D] sm:text-xs">
+      <h2 className="text-[16px] font-bold text-[#17191D] sm:text-xs">
         {sidebar?.lessonTitle || `${course.lessonsCount} Lessons`} ({sidebar?.totalDuration || course.duration})
       </h2>
 
-      <div className="mt-4 space-y-3">
+      <div className="mt-4 space-y-3 text-[30px]">
         {lessons.map((lesson, idx) => (
           <LessonRow
             key={lesson.number || idx}
@@ -55,38 +60,49 @@ export default function CourseSidebar({ course: propCourse }: { course?: CourseD
       </div>
 
       {sidebar?.moreLessonsText && (
-        <p className="mt-3 text-[8px] text-gray-500">
+        <p className="mt-3 text-[14px] text-gray-500">
           {sidebar.moreLessonsText}
         </p>
       )}
 
       {/* ================= CTA ================= */}
 
-      <p className="mt-4 text-[8px] leading-[1.55] text-gray-500">
+      <p className="mt-4 text-[13px] leading-[1.55] text-gray-500">
         Ready to Dive In? Enroll Now and Start
         <br />
         Building Your Digital Future!
       </p>
 
-      <div className="mt-1.5 flex items-baseline">
-        <span className="text-[20px] font-bold tracking-tight text-[#064DE8]">
+      <div className="mt-3.5 flex items-baseline">
+        <span className="text-[25px] font-bold tracking-tight text-[#064DE8]">
           ${sidebar?.price ?? course.price}
         </span>
 
-        <span className="ml-1 text-[8px] text-gray-500">
+        <span className="ml-1 text-[13px] text-gray-500">
           {sidebar?.priceLabel || "/Lifetime"}
         </span>
       </div>
 
       <button
         type="button"
+        onClick={() => {
+          addToCart({
+            id: String(course.id),
+            name: course.title,
+            price: Number(sidebar?.price ?? course.price ?? 0),
+            image: course.image || course.hero?.previewImage || "/images/course-1.jpg",
+            category: course.category,
+            description: course.shortDescription,
+            unit: "Lifetime",
+          });
+        }}
         className="
           mt-2.5
           w-full
           rounded-full
           bg-[#C8FF00]
           py-2
-          text-[9px]
+          text-[14px]
           font-semibold
           text-[#1B2500]
           transition
@@ -96,12 +112,12 @@ export default function CourseSidebar({ course: propCourse }: { course?: CourseD
           focus:ring-[#C8FF00]/40
         "
       >
-        {sidebar?.enrollText || "Enroll Now"}
+        {isInCart ? "Enrolled in Cart • View Cart" : (sidebar?.enrollText || "Enroll Now")}
       </button>
 
       {/* ================= COURSE INCLUDE ================= */}
 
-      <h3 className="mt-5 text-[10px] font-bold text-[#17191D]">
+      <h3 className="mt-5 text-[19px] font-bold text-[#17191D]">
         This course include
       </h3>
 
@@ -117,7 +133,7 @@ export default function CourseSidebar({ course: propCourse }: { course?: CourseD
 
       {/* ================= INSTRUCTOR ================= */}
 
-      <div className="flex items-center gap-2.5">
+      <div className="flex items-center gap-2.5 mt-10">
         <div className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#E8EAED]">
           {instructor?.avatar ? (
             <img
@@ -137,17 +153,17 @@ export default function CourseSidebar({ course: propCourse }: { course?: CourseD
         </div>
 
         <div className="min-w-0">
-          <p className="truncate text-[9px] font-semibold text-[#202329]">
+          <p className="truncate text-[14px] font-semibold text-[#202329]">
             {instructor?.name || course.creator}
           </p>
 
-          <p className="text-[7px] text-gray-500">
+          <p className="text-[12px] text-gray-500">
             {instructor?.role || course.creatorRole}
           </p>
         </div>
       </div>
 
-      <p className="mt-3 text-[7px] leading-[1.6] text-gray-500">
+      <p className="mt-3 text-[13px] leading-[1.6] text-gray-500">
         {instructor?.description || "A professional creative studio focused on modern UI/UX design, digital products and visual experiences."}
       </p>
 
@@ -158,13 +174,13 @@ export default function CourseSidebar({ course: propCourse }: { course?: CourseD
           navigate(`/creators?creator=${encodeURIComponent(creatorName)}`);
         }}
         className="
-          mt-2
+          mt-6
           rounded-full
           border
           border-gray-300
           px-3
           py-1
-          text-[7px]
+          text-[12px]
           text-gray-600
           transition
           hover:border-gray-400
@@ -189,7 +205,7 @@ function LessonRow({
   duration: string;
 }) {
   return (
-    <div className="flex items-start gap-2 text-[7px] sm:text-[8px]">
+    <div className="flex items-start gap-2 text-[12px] sm:text-[13px]">
       {/* Number */}
       <span className="w-4 shrink-0 text-gray-500">
         {number}
@@ -203,7 +219,7 @@ function LessonRow({
       </div>
 
       {/* Duration */}
-      <span className="shrink-0 text-[7px] text-[#064DE8]">
+      <span className="shrink-0 text-[12px] text-[#064DE8]">
         {duration}
       </span>
     </div>
@@ -220,7 +236,7 @@ function Feature({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-2 text-[8px] text-gray-600">
+    <div className="flex items-center gap-2 text-[13px] text-gray-600">
       <span className="shrink-0 text-[#064DE8]">
         {icon}
       </span>

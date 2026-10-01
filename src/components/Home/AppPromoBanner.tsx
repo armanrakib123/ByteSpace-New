@@ -38,8 +38,9 @@ export default function AppPromoBanner() {
   return (
     <section className="w-full bg-white px-4 py-12 sm:px-6 md:py-16 lg:px-8 lg:py-[54px]">
       <div className="mx-auto w-full max-w-[1064px]">
+        {/* Heading */}
         <div className="mx-auto max-w-[850px] text-center">
-          <h2 className="text-[28px] font-bold leading-[1.2] tracking-[-0.8px] text-[#080D24] sm:text-[32px] md:text-[34px]">
+          <h2 className="text-[30px] font-bold leading-[1.2] tracking-[-0.8px] text-[#080D24] sm:text-[32px] md:text-[34px]">
             Explore Diverse Learning Paths at Bytespace
           </h2>
 
@@ -51,6 +52,7 @@ export default function AppPromoBanner() {
           </p>
         </div>
 
+        {/* Categories */}
         <div className="mt-12 grid grid-cols-2 justify-items-center gap-x-5 gap-y-5 sm:mt-14 sm:grid-cols-3 sm:gap-x-6 md:grid-cols-6 md:gap-x-[34px] md:gap-y-0">
           {categories.map(({ title, icon: Icon }) => (
             <button
